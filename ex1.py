@@ -10,18 +10,7 @@ class TestFlatten(unittest.TestCase):
             [1,2,3,4,5]
             )
 
-def flatten(list_a,list_b,max_depth):
-    c=conc(list_a,list_b)
-    elist=[]
-    for i in list_a:
-        if type(i)==list:
-            newI=flatten(i,[],max_depth)
-            if newI is not None:
-                for j in newI:
-                    elist.append(j)
-            else:
-                elist.append(i)
-    return elist
+
 
 
 def conc(list_a,list_b):
@@ -32,14 +21,25 @@ def conc(list_a,list_b):
             flattened.append(x)
     return flattened
 
+def flatten(list_a,list_b,max_depth):
+    q=[]
+    for i in conc(list_a,list_b):
+        if type(i)==list:
+            newI=flatten(i,[],max_depth)
+            for j in newI:
+                q.append(j)
+        else:
+            q.append(i)
+    return q
+
 
 
 if __name__ == "__main__":
-    print conc([1,2,3,[4,5]],['a','b','c','d',['e']])
-    a=[1,2,7,3,[4,5]] 
-    b=[1,2,[3,[4,5]]]
+    a=[1,2,7,3,[4,5]]
+    b=['a','b','c',['d',['e','f']]]
     c=2
-    print flatten(a,b,c)
+    print (conc(a,b))
+    print (flatten(a,b,c))
     #unittest.main()
 
 
