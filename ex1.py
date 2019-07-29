@@ -32,14 +32,30 @@ def flatten(list_a,list_b,max_depth):
             q.append(i)
     return q
 
+def depth(list_a,list_b,max_depth=1):
+    p=int(input('Enter the depth you wish: '))
+    q=[]
+    for i in conc(list_a,list_b):
+        if type(i)==list:
+            max_depth+=1
+            if max_depth==p:
+                q.append(i)
+            else:
+                newI=flatten(i,[],max_depth)
+                for j in newI:
+                    q.append(j)
+        else:
+            q.append(i)
+    return q
 
 
 if __name__ == "__main__":
     a=[1,2,7,3,[4,5]]
     b=['a','b','c',['d',['e','f']]]
-    c=2
+    c=1
     print (conc(a,b))
     print (flatten(a,b,c))
+    print (depth(a,b,c))
     #unittest.main()
 
 
