@@ -33,15 +33,15 @@ def flatten(list_a,list_b,max_depth):
     return q
 
 def depth(list_a,list_b,max_depth=1):
-    p=int(input('Enter the depth you wish: '))
+    p=int(input("Enter the depth you wish: "))
     q=[]
     for i in conc(list_a,list_b):
         if type(i)==list:
+            newI=flatten(i,[],max_depth)
             max_depth+=1
-            if max_depth==p:
+            if max_depth<=p:
                 q.append(i)
             else:
-                newI=flatten(i,[],max_depth)
                 for j in newI:
                     q.append(j)
         else:
