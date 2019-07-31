@@ -3,14 +3,17 @@ import unittest
 class TestFlatten(unittest.TestCase):
 
     def test_flattendepth1(self):
-        self.assertEemptyListual(
+        self.assertEqual(
             flatten(
-                [1,2,3],
-                [4,5],2),
-            [1,2,3,4,5]
+                list_a=[1,2,7,3,[4,[5,[6]]]],
+                list_b=['a','b','c',['d',['e',['f']]]],
+                max_depth=2,
+                p=0
+            ),
+            [1,2,7,3,4,'a','b','c','d'],
             )
-def conc(list_a,list_b):
 
+def conc(list_a,list_b):
     flattened=[]
     for i in [list_a,list_b]:
         for x in i:
@@ -31,27 +34,6 @@ def flatten(list_a,list_b,max_depth,p):
             emptyList.append(i)
     return emptyList
 
-#def depth(list_a,list_b,max_depth):
-#    max_depth=int(input("Enter the depth you wish: "))
- #   emptyList=[]
-  #  p=1
-   # for i in conc(list_a,list_b):
-    #    if type(i)==list:
-     #       newI=flatten(i,[],max_depth)
-      #      if p>=max_depth:
-       #         pass
-        #        p+=1
-         #   else:
-          #      for j in i:
-           #         if type(j)==list:
-            #            pass
-             #       else:
-              #          emptyList.append(j)
-        #else:
-         #   emptyList.append(i)
-    #return emptyList
-
-
 if __name__ == "__main__":
     list_a=[1,2,7,3,[4,[5,[6]]]]
     list_b=['a','b','c',['d',['e',['f']]]]
@@ -60,7 +42,6 @@ if __name__ == "__main__":
     print (conc(list_a,list_b))
     max_depth=int(input("Enter the depth you wish: "))
     print (flatten(list_a,list_b,max_depth,p))
-    #print (depth(a,b,c))
-    #unittest.main()
+    unittest.main()
 
 
