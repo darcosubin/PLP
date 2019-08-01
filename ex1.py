@@ -9,7 +9,7 @@ class TestFlatten(unittest.TestCase):
                 list_a=[1, 2, 7, 3, [4, [5, [6]]]],
                 list_b=['a', 'b', 'c', ['d', ['e', ['f']]]],
                 max_depth=1,
-                p=0
+                currentDepth=0
             ),
             [1, 2, 7, 3, 'a', 'b', 'c'],
             )
@@ -23,7 +23,7 @@ class TestFlatten2(unittest.TestCase):
                 list_a=[1, 2, 7, 3, [4, [5, [6]]]],
                 list_b=['a', 'b', 'c', ['d', ['e', ['f']]]],
                 max_depth=2,
-                p=0
+                currentDepth=0
             ),
             [1, 2, 7, 3, 4, 'a', 'b', 'c', 'd'],
             )
@@ -37,7 +37,7 @@ class TestFlatten3(unittest.TestCase):
                 list_a=[1, 2, 7, 3, [4, [5, [6]]]],
                 list_b=['a', 'b', 'c', ['d', ['e', ['f']]]],
                 max_depth=3,
-                p=0
+                currentDepth=0
             ),
             [1, 2, 7, 3, 4, 5, 'a', 'b', 'c', 'd', 'e'],
             )
@@ -51,7 +51,7 @@ class TestFlatten4(unittest.TestCase):
                 list_a=[1, 2, 7, 3, [4, [5, [6]]]],
                 list_b=['a', 'b', 'c', ['d', ['e', ['f']]]],
                 max_depth=4,
-                p=0
+                currentDepth=0
             ),
             [1, 2, 7, 3, 4, 5, 6, 'a', 'b', 'c', 'd', 'e', 'f'],
             )
@@ -59,24 +59,24 @@ class TestFlatten4(unittest.TestCase):
 
 def conc(list_a, list_b):
     flattened = []
-    for i in [list_a, list_b]:
-        for x in i:
-            flattened.append(x)
+    for elementI in [list_a, list_b]:
+        for elementinI in elementI:
+            flattened.append(elementinI)
     return flattened
 
 
-def flatten(list_a, list_b, max_depth, p):
+def flatten(list_a, list_b, max_depth, currentDepth):
     emptyList = []
-    for i in conc(list_a, list_b):
-        if isinstance(i, (tuple, list)):
-            p + = 1
-            newI = flatten(i, [], max_depth, p)
-            if p < max_depth:
-                for j in newI:
-                    emptyList.append(j)
-                p - = 1
+    for elementI in conc(list_a, list_b):
+        if isinstance(elementI, (tuple, list)):
+            currentDepth += 1
+            newI = flatten(elementI, [], max_depth, currentDepth)
+            if currentDepth < max_depth:
+                for elemInI in newI:
+                    emptyList.append(elemInI)
+                currentDepth -= 1
         else:
-            emptyList.append(i)
+            emptyList.append(elementI)
     return emptyList
 
 
@@ -84,8 +84,8 @@ if __name__ == "__main__":
     list_a = [1, 2, 7, 3, [4, [5, [6]]]]
     list_b = ['a', 'b', 'c', ['d', ['e', ['f']]]]
     max_depth = 0
-    p = 0
+    currentDepth = 0
     print(conc(list_a, list_b))
     max_depth = int(input("Enter the depth you wish: "))
-    print(flatten(list_a, list_b, max_depth, p))
+    print(flatten(list_a, list_b, max_depth, currentDepth))
     unittest.main()
