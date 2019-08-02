@@ -64,7 +64,7 @@ def conc(list_a, list_b):
 
 
 def flatten(list_a, list_b, max_depth, current_depth):
-    """This will flatten the given litst by the given depth"""
+    """This will flatten the given lists by the given depth"""
     empty_list = []
     for element_i in conc(list_a, list_b):
         if isinstance(element_i, (tuple, list)):
