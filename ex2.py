@@ -1,7 +1,7 @@
 '''Merging two dictionaries'''
 
 def merge(first_dict, second_dict, new_dict):
-    """This will merge the two dictionfirst_dictries"""
+    """This will merge the two dictionaries"""
     for key in first_dict.keys():
         if not isinstance(first_dict[key], type(second_dict[key])):
             new_dict[key] = (first_dict[key], second_dict[key])
