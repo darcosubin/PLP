@@ -1,6 +1,5 @@
 '''Merging two dictionaries'''
 
-
 def merge(first_dict, second_dict, new_dict):
     """This will merge the two dictionfirst_dictries"""
     for key in first_dict.keys():
@@ -24,6 +23,11 @@ def conc(list_a, list_b):
         for element_in_i in element_i:
             flattened.append(element_in_i)
     return flattened
+
+
+def test_merge():
+    '''It will test if the merge works'''
+    assert merge({'1':2}, {'1':3}, {}) == {'1':5}
 
 
 if __name__ == "__main__":
