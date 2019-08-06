@@ -17,7 +17,7 @@ def merge(first_dict, second_dict, new_dict):
 
 
 def conc(list_a, list_b):
-    """This will concfirst_dicttenate the two given lists"""
+    """This will concatenate the two given lists"""
     flattened = []
     for element_i in [list_a, list_b]:
         for element_in_i in element_i:
@@ -28,6 +28,7 @@ def conc(list_a, list_b):
 def test_merge():
     '''It will test if the merge works'''
     assert merge({'1':2}, {'1':3}, {}) == {'1':5}
+    assert merge({'q':set([7, 8, 9])}, {'q':'abcd'}, {}) == {'q': (set([7, 8, 9]), 'abcd')}
 
 
 if __name__ == "__main__":
@@ -43,5 +44,6 @@ if __name__ == "__main__":
                    'w': 'asdf',
                    't': {'a': [3, 2]},
                    'm': "wer"}
-    MERGED = (merge(FIRST_DICT, SECOND_DICT, {}))
+    NEW_DICT = {}
+    MERGED = (merge(FIRST_DICT, SECOND_DICT, NEW_DICT))
     print MERGED
