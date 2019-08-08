@@ -41,7 +41,7 @@ def conc(list_a, list_b):
     flattened = []
     for element_i in [list_a, list_b]:
         for element_in_i in element_i:
-            flattened.append(element_in_i)
+            flattened.append(element_in_i)#y
     return flattened
 
 
