@@ -1,0 +1,5 @@
+Sorted dictionaries by vaule from keys are: 
+[{'y': 5, 'x': 0}, {'a': 1, 'b': 2}, {'c': 3, 'g': 1}, {'c': 2, 'd': 4}, {'a': 7, 'c': 3}]
+
+Sorted index of dictionaries are: 
+[4, 1, 5, 2, 3]
