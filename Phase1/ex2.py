@@ -1,5 +1,5 @@
 '''Merging two dictionaries'''
-
+from collections import OrderedDict
 
 def merge(first_dict, second_dict, new_dict):
     """This will merge the two dictionfirst_dictries"""
@@ -26,7 +26,7 @@ def merge(first_dict, second_dict, new_dict):
                                   {})
         else:
             new_dict[key] = first_dict[key] + second_dict[key]
-    return new_dict
+    return OrderedDict(sorted(new_dict.items()))
 
 
 def conc(list_a, list_b, unique):

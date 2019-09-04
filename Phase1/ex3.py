@@ -8,7 +8,7 @@ def readfromfile():
     return entry
 
 
-def enum(listofj):
+def enum():
     '''Enumerating'''
     listofj = []
     listen = list(enumerate(splitndict(), start=1))
@@ -34,8 +34,8 @@ def splitndict():
         else:
             listofd.append(newdict)
             newdict = {}
-        listen = list(enumerate(listofd, start=1))
-        print listen
+    listen = list(enumerate(listofd, start=1))
+    print listen
     return listen
 
 
@@ -73,6 +73,5 @@ def writeinfile():
 
 
 if __name__ == "__main__":
-
     writeinfile()
     sortdicts()
